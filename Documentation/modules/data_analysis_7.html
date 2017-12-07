@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Analysis-Additional Analysis</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          /* Style the tab */
+          div.tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          margin-left: 15px;
+          }
+          /* Style the buttons inside the tab */
+          div.tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: 1px solid #ccc;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          }
+          /* Change background color of buttons on hover */
+          div.tab button:hover {
+          background-color: #ddd;
+          }
+          /* Create an active/current tablink class */
+          div.tab button.active {
+          background-color: #ccc;
+          }
+          /* Style the tab content */
+          .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+          }
+          .grad {
+              background-color:#150434;
+              text-align: center;
+              color: white;
+              height: 120px;
+              margin-bottom: 10px;
+          }
+
+        .vertical-menu {
+            background-color:white;
+            color: black;
+            display: block;
+            padding: 12px;
+            font-size: 15px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+         a#active {
+            background-color:#ccc;
+            color: black;
+        }
+        a:active {
+          color: blue;
+        }
+
+        .btn-group {
+            background-color: #4CAF50;
+            /* Green background */
+            border: 1px solid green;
+            /* Green border */
+            color: white;
+            /* White text */
+            padding: 10px 24px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            float: left;
+            /* Float the buttons side by side */
+            left: 25%;
+            margin-top: 5%;
+        }
+
+        .btn-group:hover {
+            background-color: #3e8e41;
+        }
+        h4,h5{
+          text-decoration: underline;
+        }
+        li{
+          text-align: justify;
+        }
+    </style>
+    <script>
+    function openChart(evt, chartName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(chartName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    window.onload=function()
+    {
+      document.getElementById("first").click()
+    }
+    </script>
+</head>
+
+<body>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="grad">
+              <br/>
+              <h1>VISUAL&nbspNARRATIVE</h1>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid" style="">
+        <div style="margin:1%">
+            <div class="row">
+              <div class="col-lg-2">
+                <div>
+                    <h3>Contents:</h3>
+                    <br/>
+                    <a class="vertical-menu" href="data_analysis_1.html">1. Introduction</a>
+                    <a class="vertical-menu" href="data_analysis_2.html">2. Revenue Analysis</a>
+                    <a class="vertical-menu" href="data_analysis_3.html">3. Discussion of ROI</a>
+                    <a class="vertical-menu" href="data_analysis_4.html">4. Market Concentration Analysis</a>
+                    <a class="vertical-menu" href="data_analysis_5.html">5. Real Estate Maket Analysis</a>
+                    <a class="vertical-menu" href="data_analysis_6.html">6. Tourism Impact</a>
+                    <a class="vertical-menu" id="active" href="data_analysis_7.html">7. Additional analysis</a>
+                    <a class="vertical-menu" href="data_analysis_8.html">8. Conclusion</a>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <a class="vertical-menu" href="../VisualNarrative.html"><span style="text-decoration:underline;color:blue;">Go to HOME</span></a>
+                    <br/>
+                </div>
+              </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                      <h4 style="margin-left:15px;">Click on the desired view-type</h4>
+                      <p style="margin-left:15px;color:blue;">NOTE: Click on the tabs below to be able to view the graph.</p>
+                      <div class="tab">
+                         <button class="tablinks" id="first" onclick="openChart(event, 'Size')">SizeRank Vs Prices</button>
+                         <button class="tablinks" onclick="openChart(event, 'Rating')">Overall Rating</button>
+                         <button class="tablinks" onclick="openChart(event, 'Location')">Location Rating</button>
+                         <button class="tablinks" onclick="openChart(event, 'Value')">Value Rating</button>
+                      </div>
+                      <div id="Size" class="tabcontent">
+                          <div class="col-lg-8" style="border:3px solid black;margin-left:15px;">
+                              <img src="price_by_sizerank.png" style="width:700px;height:800px;">
+                          </div>
+                          <div class="col-lg-1">
+                          </div>
+                          <div class="col-lg-3" style="background-color:yellow;margin-left:15px;">
+                              <h4 style="text-align:center;"> INFERENCES </h4>
+                              <ul>
+                                <li>This chart compares size rank of zipcode with house prices. The lesser the rank, the higher the poulation in that zipcode.</li>
+                                <br/>
+                                <li>It can be observed that most of the population resides in nominal house priced colonies and shows the presence of just one complex with a comparatively overpriced house market.</li>
+                                <br/>
+                                <li>This passess the insight of the market being not too overbiased to a price range and is a good sign for investment.</li>
+                              </ul>
+                          </div>
+                        </div>
+                        <div id="Rating" class="tabcontent">
+                            <div class="col-lg-8" style="border:3px solid black;margin-left:15px;">
+                                <img src="review_score_by_rating.png" style="width:700px;height:800px;">
+                            </div>
+                            <div class="col-lg-1">
+                            </div>
+                            <div class="col-lg-3" style="background-color:yellow;margin-left:15px;">
+                                <h4 style="text-align:center;"> INFERENCES </h4>
+                                <ul>
+                                  <li>This chart compares median house listing rating grouped by zipcode. The higher the rating, the better the houses within that zipcode.</li>
+                                  <br/>
+                                  <li>This feature is not a very strong indicator or supporter to choose a certain zipcode but is a good visualization to get an introuctory understand of currently existing expectations and views of customers.</li>
+                                </ul>
+                            </div>
+                          </div>
+                            <div id="Location" class="tabcontent">
+                                <div class="col-lg-8" style="border:3px solid black;margin-left:15px;">
+                                    <img src="review_score_by_location.png" style="width:700px;height:800px;">
+                                </div>
+                                <div class="col-lg-1">
+                                </div>
+                                <div class="col-lg-3" style="background-color:yellow;margin-left:15px;">
+                                    <h4 style="text-align:center;"> INFERENCES </h4>
+                                    <ul>
+                                      <li>This chart compares median house listing location rating grouped by zipcode. The higher the rating, the better the locality of the zipcode.</li>
+                                      <br/>
+                                      <li>This feature is not a very strong indicator or supporter to choose a certain zipcode but is a good visualization to get an introuctory understand of the aesthetic values and tastes of customers.</li>
+                                      <br/>
+                                      <li>It gives good idea on the perception of the location's quality</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="Value" class="tabcontent">
+                                <div class="col-lg-8" style="border:3px solid black;margin-left:15px;">
+                                    <img src="review_score_by_value.png" style="width:700px;height:800px;">
+                                </div>
+                                <div class="col-lg-1">
+                                </div>
+                                <div class="col-lg-3" style="background-color:yellow;margin-left:15px;">
+                                    <h4 style="text-align:center;"> INFERENCES </h4>
+                                    <ul>
+                                      <li>This chart compares median house listing price-value rating grouped by zipcode. The higher the rating, the better are the prices mentioned in the listing within that zipcode.</li>
+                                      <br/>
+                                      <li>This feature is a good indicator to understand what prices pass as reasonable for consumers hitherto within a certain zipcode. Future pricing operation can lookup such information and use it to establish a decent price.</li>
+                                      <br/>
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>

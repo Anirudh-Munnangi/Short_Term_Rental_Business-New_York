@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Munging-Introduction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          /* Style the tab */
+          div.tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          margin-left: 15px;
+          }
+          /* Style the buttons inside the tab */
+          div.tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: 1px solid #ccc;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          }
+          /* Change background color of buttons on hover */
+          div.tab button:hover {
+          background-color: #ddd;
+          }
+          /* Create an active/current tablink class */
+          div.tab button.active {
+          background-color: #ccc;
+          }
+          /* Style the tab content */
+          .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+          }
+          .grad {
+              background-color:#150434;
+              text-align: center;
+              color: white;
+              height: 120px;
+              margin-bottom: 10px;
+          }
+
+        .vertical-menu {
+            background-color:white;
+            color: black;
+            display: block;
+            padding: 12px;
+            font-size: 15px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+         a#active {
+            background-color:#ccc;
+            color: black;
+        }
+        a:active {
+          color: blue;
+        }
+
+        .btn-group {
+            background-color: #4CAF50;
+            /* Green background */
+            border: 1px solid green;
+            /* Green border */
+            color: white;
+            /* White text */
+            padding: 10px 24px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            float: left;
+            /* Float the buttons side by side */
+            left: 25%;
+            margin-top: 5%;
+        }
+
+        .btn-group:hover {
+            background-color: #3e8e41;
+        }
+        h4,h5{
+          text-decoration: underline;
+        }
+        li{
+          text-align: justify;
+        }
+    </style>
+    <script>
+    function openChart(evt, chartName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(chartName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    window.onload=function()
+    {
+      document.getElementById("first").click()
+    }
+    </script>
+</head>
+
+<body>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="grad">
+              <br/>
+              <h1>DATA&nbsp&nbspMUNGING</h1>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid" style="">
+        <div style="margin:1%">
+            <div class="row">
+                <div class="col-lg-2" style="border-style:groove;border-width:5px;background-color:#eee;">
+                    <div>
+                        <h3>Contents:</h3>
+                        <br/>
+                        <a class="vertical-menu" id="active" href="data_munging_1.html">1. Introduction</a>
+                        <a class="vertical-menu" href="data_munging_2.html">2. Data Filtering</a>
+                        <a class="vertical-menu" href="data_munging_3.html">3. House Prices</a>
+                        <a class="vertical-menu" href="data_munging_4.html">4. Common Zipcodes</a>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <a class="vertical-menu" href="../VisualNarrative.html"><span style="text-decoration:underline;color:blue;">Go to HOME</span></a>
+                        <br/>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                      <div class="col-lg-10" style="border:1px solid black;margin-left:15px;">
+                        <h4>INTRODUCTION:</h4>
+                        <p style="font-size:18px;text-align:justify;">Data Munging is an important step in acquiring a structure and control on the datasets. In this analysis, the objective is to be able to focus on a certain type of market at any point of time and to be able to switch to another one as per the requirement. Hence, in the section discussing the filtering aspect, the generic approach implemented is discussed which achieves the mentioned functionality. The housing price values are discussed and it can be seen that they are not consistent. Also, the presence of less commonality in between zipcodes of both datasets is a feature worthy of mention. Associated with that discussion is the knowledge about common zipcodes which can be set as a start point for the analysis to begin. However, the decisions must not be biased upon those values only and other options also must be considered which can be seen in Data Analysis and Visualization discussions.</p>
+                        </p>
+                        <br/>
+                        <br/>
+                        <p style="font-size:20px;">Following are the cases discussed in each of the topic along side:</p>
+                        <h5>Data Filtering:</h5><p>This portion talks about the generic way in which the filtering is performed.</p>
+                        <h5>House Prices:</h5><p> This section is about the varying house price information per zipcode.</p>
+                        <h5>Common Zipcodes</h5><p>Here, the common zipcodes are menioned which are a good place to start the analysis.</p>
+                          <br/>
+                          <br/>
+                          <br/>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>

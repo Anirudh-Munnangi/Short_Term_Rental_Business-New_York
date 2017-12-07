@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Visual Narrative</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+      .split-hor-box{
+        background-color: #eee;
+        color: black;
+        display: block;
+        padding: 12px;
+        text-decoration: none;
+        text-align:left;
+        border: 1px solid black;
+      }
+      .split-hor-box:hover {
+        background-color:#ccc;
+      }
+      .btn-group{
+          background-color: #4CAF50; /* Green background */
+          border: 1px solid green; /* Green border */
+          color: white; /* White text */
+          padding: 10px 24px; /* Some padding */
+          cursor: pointer; /* Pointer/hand icon */
+          float: left; /* Float the buttons side by side */
+          left:25%;
+          margin-top:5%;
+      }
+      .btn-group:hover {
+          background-color: #3e8e41;
+      }
+</style>
+<script>
+  function dm_start()
+  {
+    window.location.href = "modules/data_munging_1.html";
+  }
+  function dq_start()
+  {
+    window.location.href = "modules/data_quality_1.html";
+  }
+  function da_start()
+  {
+    window.location.href = "modules/data_analysis_1.html";
+  }
+</script>
+</head>
+<body>
+  <div style="background-color:#150434;">
+  <div>
+    <div class="jumbotron" style="background-color:#00bbc9;">
+      <h2 style="text-align:center;font-size:1.75em;line-height:1.39;font-weight:400;">A Visual Narrative on the prospects of short term house rental business in New York city.</h2>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <div class="container">
+    <p style="text-align:center;color:#fff;font-family:Benton Sans Book;font-weight:400;font-style:normal;font-size:16px;line-height:1.88;">Thank you for visiting this analysis tool. We look forward to provide you insights on various aspects of the data.</p>
+    <p style="text-align:center;color:#fff;font-family:Benton Sans Book;font-weight:400;font-style:normal;font-size:16px;line-height:1.88;">Please use the navigation buttons to explore the topics. </p>
+    <br/>
+    <br/>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="split-hor-box">
+          <button class="btn-group" style="left:30%;" onclick="dm_start()">Data Munging</button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <ul>
+            <li><h5>Investigate the two datasets.</h5></li>
+            <li><h5>Understand the generic filter functionality on both the datasets.</h5></li>
+            <li><h5>Check out the output types stored.</h5></li>
+            <li><h5>Visualize the different house price information per zipcode.</h5></li>
+            <li><h5>Learn about the common zip codes present and their role.</h5></li>
+          </ul>
+          <br/>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="split-hor-box">
+          <button class="btn-group" style="left:22%;"onclick="dq_start()">Data Quality Analysis</button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <ul>
+            <li><h5>Analyze data quality of required columns.</h5></li>
+            <li><h5>Learn suggested ways to handle such data.</h5></li>
+            <li><h5>Understand implementation rules applied to deal with such data.</h5></li>
+            <li><h5>Check COMPLETE Data Quality of Airbnb data.</h5></li>
+            <li><h5>Check COMPLETE Data Quality of Zillow data.</h5></li>
+          </ul>
+          <br/>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="split-hor-box">
+          <button class="btn-group" style="left:14%;" onclick="da_start()">Data Analysis and Visualization</button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <ul>
+            <li><h5>Explore the analytical narrative.</h5></li>
+            <li><h5>Learn insights on individual charts.</h5></li>
+            <li><h5>Gather sufficient information towards a strong conlusion.</h5></li>
+            <li><h5>Visualize various aspects of analysis performed.</h5></li>
+            <li><h5>Check final selected candidate list of zipcodes.</h5></li>
+          </ul>
+          <br/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+</div>
+</body>
+</html>

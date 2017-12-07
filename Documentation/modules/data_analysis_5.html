@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Analysis-Real Estate Market</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          /* Style the tab */
+          div.tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          margin-left: 15px;
+          }
+          /* Style the buttons inside the tab */
+          div.tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: 1px solid #ccc;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          }
+          /* Change background color of buttons on hover */
+          div.tab button:hover {
+          background-color: #ddd;
+          }
+          /* Create an active/current tablink class */
+          div.tab button.active {
+          background-color: #ccc;
+          }
+          /* Style the tab content */
+          .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+          }
+          .grad {
+              background-color:#150434;
+              text-align: center;
+              color: white;
+              height: 120px;
+              margin-bottom: 10px;
+          }
+
+        .vertical-menu {
+            background-color:white;
+            color: black;
+            display: block;
+            padding: 12px;
+            font-size: 15px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+         a#active {
+            background-color:#ccc;
+            color: black;
+        }
+        a:active {
+          color: blue;
+        }
+
+        .btn-group {
+            background-color: #4CAF50;
+            /* Green background */
+            border: 1px solid green;
+            /* Green border */
+            color: white;
+            /* White text */
+            padding: 10px 24px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            float: left;
+            /* Float the buttons side by side */
+            left: 25%;
+            margin-top: 5%;
+        }
+
+        .btn-group:hover {
+            background-color: #3e8e41;
+        }
+        h4,h5{
+          text-decoration: underline;
+        }
+        li{
+          text-align: justify;
+        }
+    </style>
+    <script>
+    function openChart(evt, chartName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(chartName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    window.onload=function()
+    {
+      document.getElementById("first").click()
+    }
+    </script>
+</head>
+
+<body>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="grad">
+              <br/>
+              <h1>VISUAL&nbspNARRATIVE</h1>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid" style="">
+        <div style="margin:1%">
+            <div class="row">
+              <div class="col-lg-2">
+                <div>
+                    <h3>Contents:</h3>
+                    <br/>
+                    <a class="vertical-menu" href="data_analysis_1.html">1. Introduction</a>
+                    <a class="vertical-menu" href="data_analysis_2.html">2. Revenue Analysis</a>
+                    <a class="vertical-menu" href="data_analysis_3.html">3. Discussion of ROI</a>
+                    <a class="vertical-menu" href="data_analysis_4.html">4. Market Concentration Analysis</a>
+                    <a class="vertical-menu" id="active" href="data_analysis_5.html">5. Real Estate Maket Analysis</a>
+                    <a class="vertical-menu" href="data_analysis_6.html">6. Tourism Impact</a>
+                    <a class="vertical-menu" href="data_analysis_7.html">7. Additional analysis</a>
+                    <a class="vertical-menu" href="data_analysis_8.html">8. Conclusion</a>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <a class="vertical-menu" href="../VisualNarrative.html"><span style="text-decoration:underline;color:blue;">Go to HOME</span></a>
+                    <br/>
+                </div>
+              </div>
+                <div class="col-lg-10">
+                  <div class="row">
+                    <h4 style="margin-left:15px;">Click on the desired view-type</h4>
+                    <p style="margin-left:15px;color:blue;">NOTE: Click on the tabs below to be able to view the graph.</p>
+                    <div class="tab">
+                       <button class="tablinks" id="first" onclick="openChart(event, 'CAGR')">CAGR Analysis</button>
+                       <button class="tablinks" onclick="openChart(event, 'PRICE')">Price Analysis</button>
+                       <button class="tablinks" onclick="openChart(event, 'Finalized')">Finalized Zipcodes</button>
+                    </div>
+                    <div id="CAGR" class="tabcontent">
+                        <div class="col-lg-8" style="border:3px solid black;margin-left:15px;">
+                            <img src="house_cagr_by_zipcode.png" style="width:700px;height:800px;">
+                        </div>
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3" style="background-color:yellow;margin-left:15px;">
+                          <h4 style="text-align:center;"> INFERENCES </h4>
+                          <ul>
+                            <li>This is a chart which shows the appreciation of house values grouped by zipcode. It used CAGR metric to indicate the same.</li>
+                            <br/>
+                            <li>CAGR metric has been used to indicate the median appreciation value of houses within a zipcode. Even though not very pertinent to the current business model, it is still an important factor to consider.</li>
+                            <br/>
+                            <li>At this point, previously selected list make an impact in the following decision of choosing the zipcodes.</li>
+                            <br/>
+                            <li>11201, 11231, 10036, 10303, 11217, 10013, 100128, 10011, 10022, 10023 are the current list of chosen zipcodes which will be analyzed later with respect to other factors.</li>
+                          </ul>
+                          <br/>
+                          <br/>
+                        </div>
+                      </div>
+                      <div id="PRICE" class="tabcontent">
+                          <div class="col-lg-8" style="border:3px solid black;margin-left:15px;">
+                              <img src="house_price_by_zipcode.png" style="width:700px;height:800px;">
+                          </div>
+                          <div class="col-lg-1">
+                          </div>
+                          <div class="col-lg-3" style="background-color:yellow;margin-left:15px;">
+                            <h4 style="text-align:center;"> INFERENCES </h4>
+                            <ul>
+                              <li>This is a chart which shows the median price of propeties within a zipcode.</li>
+                              <br/>
+                              <li>This chart provides the insights to carefully choose a price value which behaves well with other factors and expectations. The idea would be to invest less and have less break even times.</li>
+                              <br/>
+                              <li>At this point, previously selected list make an impact in the following decision of choosing the zipcodes.</li>
+                              <br/>
+                              <li>10011, 10022, 10023, 10003, 10028, 10036, 10021, 10128, 10025 are the current list of chosen zipcodes which will be analyzed later with respect to other factors.</li>
+                            </ul>
+                            <br/>
+                            <br/>
+                          </div>
+                        </div>
+                        <div id="Finalized" class="tabcontent">
+                            <div class="col-lg-11" >
+                                <p style="font-size:18px;text-align:justify;">An investment should be backed by sufficient scope of profit possibilities. Checking the market appreciation values and backing them by the right amount of investment values can lead to a good decision in choosing the right zicode. Also, carefully analyzing the other parameters discussed is also essential to find the truly profitable zipcodes which are suitable to the business model and have scope of added advantage.</p>
+                                <br/>
+                                <p style="font-size:18px;text-align:justify;">The final selected candidate list while keeping market values as the factor is [10011, 10022, 10023, 10128, 10036].</p>
+                                <br/>
+                            </div>
+                        </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>

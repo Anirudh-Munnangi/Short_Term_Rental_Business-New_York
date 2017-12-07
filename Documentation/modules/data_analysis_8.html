@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Analysis-Conclusion</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          /* Style the tab */
+          div.tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          margin-left: 15px;
+          }
+          /* Style the buttons inside the tab */
+          div.tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: 1px solid #ccc;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          }
+          /* Change background color of buttons on hover */
+          div.tab button:hover {
+          background-color: #ddd;
+          }
+          /* Create an active/current tablink class */
+          div.tab button.active {
+          background-color: #ccc;
+          }
+          /* Style the tab content */
+          .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+          }
+          .grad {
+              background-color:#150434;
+              text-align: center;
+              color: white;
+              height: 120px;
+              margin-bottom: 10px;
+          }
+
+        .vertical-menu {
+            background-color:white;
+            color: black;
+            display: block;
+            padding: 12px;
+            font-size: 15px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+         a#active {
+            background-color:#ccc;
+            color: black;
+        }
+        a:active {
+          color: blue;
+        }
+
+        .btn-group {
+            background-color: #4CAF50;
+            /* Green background */
+            border: 1px solid green;
+            /* Green border */
+            color: white;
+            /* White text */
+            padding: 10px 24px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            float: left;
+            /* Float the buttons side by side */
+            left: 25%;
+            margin-top: 5%;
+        }
+
+        .btn-group:hover {
+            background-color: #3e8e41;
+        }
+        h4,h5{
+          text-decoration: underline;
+        }
+        li{
+          text-align: justify;
+        }
+    </style>
+    <script>
+    function openChart(evt, chartName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(chartName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
+</head>
+
+<body>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="grad">
+              <br/>
+              <h1>VISUAL&nbspNARRATIVE</h1>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid" style="">
+        <div style="margin:1%">
+            <div class="row">
+              <div class="col-lg-2">
+                <div>
+                    <h3>Contents:</h3>
+                    <br/>
+                    <a class="vertical-menu" href="data_analysis_1.html">1. Introduction</a>
+                    <a class="vertical-menu" href="data_analysis_2.html">2. Revenue Analysis</a>
+                    <a class="vertical-menu" href="data_analysis_3.html">3. Discussion of ROI</a>
+                    <a class="vertical-menu" href="data_analysis_4.html">4. Market Concentration Analysis</a>
+                    <a class="vertical-menu" href="data_analysis_5.html">5. Real Estate Maket Analysis</a>
+                    <a class="vertical-menu" href="data_analysis_6.html">6. Tourism Impact</a>
+                    <a class="vertical-menu" href="data_analysis_7.html">7. Additional analysis</a>
+                    <a class="vertical-menu" id="active" href="data_analysis_8.html">8. Conclusion</a>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <a class="vertical-menu" href="../VisualNarrative.html"><span style="text-decoration:underline;color:blue;">Go to HOME</span></a>
+                    <br/>
+                </div>
+              </div>
+                <div class="col-lg-10">
+                    <h2>Conclusion:</h2>
+                    <br/>
+                    <p style="font-size:18px;text-align:justify;">Following the hypothesis suggested at the start of the visual narrative, 7 zipcodes have been narrowed down and are listed below in decreasing rank of investment choice. This list of zipcodes are the ones which are backed up with sufficient revenue, fast ROI, decent competition, good house values plus nominal prices and finally associated with a good tourism prospect.</p>
+                    <br/>
+                    <p style="font-size:18px;text-align:justify;">Listed below are the zipcodes where 7 is maximum preference:</p>
+                    <br/>
+                    <div style="border:1px solid black;border-style:groove;width:720px;">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Rank</th>
+                            <th>Zipcode</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>7</td>
+                            <td>10036</td>
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>10011</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>10022</td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>10023</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>10005</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>10017</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>10280</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <br/>
+                    <br/>
+                    <p style="margin-left:15px;font-size:18px;text-align:justify;">Following is a choropleth map of the zipcodes which displays with resect to the priority_level/rank:-</p>
+                      <div style="margin-left:15px;float:left;">
+                          <img src="zipcode_choropleth_map.png" style="display:block;width:700px;height:800px;">
+                      </div>
+                </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>

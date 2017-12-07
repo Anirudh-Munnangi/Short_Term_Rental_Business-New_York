@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Quality-Airbnb</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          /* Style the tab */
+          div.tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          margin-left: 15px;
+          }
+          /* Style the buttons inside the tab */
+          div.tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: 1px solid #ccc;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          }
+          /* Change background color of buttons on hover */
+          div.tab button:hover {
+          background-color: #ddd;
+          }
+          /* Create an active/current tablink class */
+          div.tab button.active {
+          background-color: #ccc;
+          }
+          /* Style the tab content */
+          .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+          }
+          .grad {
+              background-color:#150434;
+              text-align: center;
+              color: white;
+              height: 120px;
+              margin-bottom: 10px;
+          }
+
+        .vertical-menu {
+            background-color:white;
+            color: black;
+            display: block;
+            padding: 12px;
+            font-size: 15px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+         a#active {
+            background-color:#ccc;
+            color: black;
+        }
+        a:active {
+          color: blue;
+        }
+
+        .btn-group {
+            background-color: #4CAF50;
+            /* Green background */
+            border: 1px solid green;
+            /* Green border */
+            color: white;
+            /* White text */
+            padding: 10px 24px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            float: left;
+            /* Float the buttons side by side */
+            left: 25%;
+            margin-top: 5%;
+        }
+
+        .btn-group:hover {
+            background-color: #3e8e41;
+        }
+        h4,h5{
+          text-decoration: underline;
+        }
+        li{
+          text-align: justify;
+        }
+    </style>
+    <script>
+    function openChart(evt, chartName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(chartName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    window.onload=function()
+    {
+      document.getElementById("first").click()
+    }
+    </script>
+</head>
+
+<body>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="grad">
+              <br/>
+              <h1>DATA&nbsp&nbspQUALITY&nbsp&nbspANALYSIS</h1>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid" style="">
+        <div style="margin:1%">
+            <div class="row">
+                <div class="col-lg-2" style="border-style:groove;border-width:5px;background-color:#eee;">
+                  <div>
+                      <h3>Contents:</h3
+                      <br/>
+                      <a class="vertical-menu" href="data_quality_1.html">1. Introduction</a>
+                      <a class="vertical-menu" href="data_quality_2.html">2. Price Values</a>
+                      <a class="vertical-menu" href="data_quality_3.html">3. Duration Of Stay</a>
+                      <a class="vertical-menu" href="data_quality_4.html">4. Sparse Data</a>
+                      <a class="vertical-menu" href="data_quality_5.html">5. Clean Data</a>
+                      <a class="vertical-menu" id="active" href="data_quality_6.html">6. Airbnb Data Quality</a>
+                      <a class="vertical-menu" href="data_quality_7.html">7. Zillow Data Quality</a>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <a class="vertical-menu" href="../VisualNarrative.html"><span style="text-decoration:underline;color:blue;">Go to HOME</span></a>
+                      <br/>
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                    <h2> Following is the complete data quality analysis of the airbnb dataset:</h2>
+                    <br/>
+                    <div class="row">
+                        <div class="col-lg-11" style="border:3px solid black;margin-left:15px;">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>Column Name</th>
+                                <th>Missing Values</th>
+                                <th>Consistent</th>
+                                <th>Duplicates</th>
+                                <th>Outliers</th>
+                                <th>Believability</th>
+                                <th>Key Insights</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Id</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>Nil</td>
+                                <td>Nil</td>
+                                <td>Yes. We expect one item for each listing.</td>
+                                <td>None</td>
+                              </tr>
+                              <tr>
+                                <td>Listing_url</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>Nil</td>
+                                <td>Nil</td>
+                                <td>Yes. Each url is consistent.</td>
+                                <td>None</td>
+                              </tr>
+                              <tr>
+                                <td>Scrape_Id</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>All values same.</td>
+                                <td>Nil</td>
+                                <td>Yes. It is possible that all the data has been pulled at the same time.</td>
+                                <td>There is one unique element and that is repeated 40753 times which is the total number of listings.</td>
+                              </tr>
+                              <tr>
+                                <td>Last_scraped</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40749 duplicates..</td>
+                                <td>Nil</td>
+                                <td>There are 4 unique values which are close by and repeated. It is possible that the data is pulled in a span of 2-3 days.</td>
+                                <td>The data is pulled in a span of 2-3 days.</td>
+                              </tr>
+                              <tr>
+                                <td>Name</td>
+                                <td>35 missing values.</td>
+                                <td>Yes</td>
+                                <td>844 duplicates.</td>
+                                <td>Nil</td>
+                                <td>39909 unique values. It is possible that names might repeat</td>
+                                <td>Most of the data is unique.</td>
+                              </tr>
+                              <tr>
+                                <td>Summary</td>
+                                <td>1615 missing values.</td>
+                                <td>Yes</td>
+                                <td>2814 duplicates.</td>
+                                <td>Nil</td>
+                                <td>37939 unique values. It is possible summaries might repeat but a value of 2814 seems to be a bit high.</td>
+                                <td>A value of 2814 repetitions seems to be a tad bit out of order. Care must be taken.</td>
+                              </tr>
+                              <tr>
+                                <td>Space</td>
+                                <td>12872 missing values.</td>
+                                <td>No. A lot of missing values present.</td>
+                                <td>13687 duplicates.</td>
+                                <td>Nil</td>
+                                <td>27056 unique values.  Space can match in most homes and hence the presence of duplicates is obvious.</td>
+                                <td>Care needs to be taken about the presence of missing values.</td>
+                              </tr>
+                              <tr>
+                                <td>Description</td>
+                                <td>19 missing values.</td>
+                                <td>Yes</td>
+                                <td>589 duplicates.</td>
+                                <td>Nil</td>
+                                <td>40164 unique values. Most values are unique and its possible as different hosts advertise differently.</td>
+                                <td>Field seems to be consistent.</td>
+                              </tr>
+                              <tr>
+                                <td>Experiences_offered</td>
+                                <td>Nil</td>
+                                <td>Yes but with a ‘none’ value.</td>
+                                <td>40753 duplicates.</td>
+                                <td>All seems to be outliers with a common absurd value.</td>
+                                <td>No. Experiences offered is a quite important marketing term and all of them are ‘none’.</td>
+                                <td>Checks must be done if the field was not read properly. Very less chance exists that all of them are ‘none’.</td>
+                              </tr>
+                              <tr>
+                                <td>Neighborhood_overview</td>
+                                <td>17124 missing values.</td>
+                                <td>Yes but with a lot of missing values.</td>
+                                <td>19073 duplicates.</td>
+                                <td>Nil</td>
+                                <td>Yes. All houses close by will be near a common neighborhood and we can expect repetitions in data.</td>
+                                <td> Data seems to be consistent given the repetitions.</td>
+                              </tr>
+                              <tr>
+                                <td>Notes</td>
+                                <td>26146 missing values.</td>
+                                <td>No</td>
+                                <td>27258 duplicates.</td>
+                                <td>Yes in the form of blanks.</td>
+                                <td>It feels not believable as notes can be quite different per host and we have repeats.</td>
+                                <td>Care needs to taken regarding using it in analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Transit</td>
+                                <td>15293 missing values.</td>
+                                <td>Yes</td>
+                                <td>17250 duplicates.</td>
+                                <td>Yes in the form of blanks.</td>
+                                <td>Yes. It seems possible that people might miss out this field. Also, places close by will have similar value of this field.</td>
+                                <td>Care must be taken while using this value. On broad sense it seems to be okay.</td>
+                              </tr>
+                              <tr>
+                                <td>Access</td>
+                                <td>17172 missing values.</td>
+                                <td>Yes</td>
+                                <td>19496 duplicates.</td>
+                                <td>Yes. Many blanks.</td>
+                                <td>Most houses can have similar access method and hence repetitions seem to be okay.</td>
+                                <td>No key insights. Only data seems to be consistent.</td>
+                              </tr>
+                              <tr>
+                                <td>Interaction</td>
+                                <td>18276 missing values.</td>
+                                <td>Yes</td>
+                                <td>20197 duplicates.</td>
+                                <td>Many blanks as outliers.</td>
+                                <td>Data seems to be believable as per the values associated.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>House_rules</td>
+                                <td>14834 missing values.</td>
+                                <td>Yes</td>
+                                <td>16852 duplicates.</td>
+                                <td>As outliers.</td>
+                                <td>23901 unique values. It seems to be possible that people might just copy earlier rules used by host.</td>
+                                <td>No issues other than missing values.</td>
+                              </tr>
+                              <tr>
+                                <td>Thumbnail_url</td>
+                                <td>8616 missing values</td>
+                                <td>Yes</td>
+                                <td>8624 duplicates.</td>
+                                <td>Nil</td>
+                                <td>32129 unique values.</td>
+                                <td>Not much important for analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Medium_url</td>
+                                <td>8616 missing values</td>
+                                <td>Yes</td>
+                                <td>8624 duplicates.</td>
+                                <td>Nil</td>
+                                <td>32129 unique values.</td>
+                                <td>Not much important for analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Picture_url</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>12 duplicates.</td>
+                                <td>Nil</td>
+                                <td>40741 unique values which seems to be true as each house should have a unique url.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Xl_picture_url</td>
+                                <td>8616 missing values</td>
+                                <td>Yes</td>
+                                <td>8624 duplicates.</td>
+                                <td>Nil</td>
+                                <td>32129 unique values.</td>
+                                <td>Not much important for analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_id</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>6453 duplicates</td>
+                                <td>Nil</td>
+                                <td>34300 unique values. Seems to be believable given if the number of unique hosts are near the same count.</td>
+                                <td>Verify with the number of unique hosts.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_url</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>6453 duplicates.</td>
+                                <td>Nil</td>
+                                <td>34300 unique values. Seems to be believable given if the number of unique hosts are near the same count.</td>
+                                <td>Verify with the number of unique hosts.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_name</td>
+                                <td>251 missing values.</td>
+                                <td>Yes</td>
+                                <td>30317 duplicates.</td>
+                                <td>Nil</td>
+                                <td>10436 unique values. Seems to be consistent.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_since</td>
+                                <td>251 missing values.</td>
+                                <td>Yes</td>
+                                <td>37933 duplicates.</td>
+                                <td>Nil</td>
+                                <td>2820 unique values and it is quite possible to see  such a number.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_location</td>
+                                <td>416 missing values.</td>
+                                <td>Doesn’t seems to be given the no of duplicate values.</td>
+                                <td>39514 duplicates.</td>
+                                <td>Nil</td>
+                                <td>1239 unique values. It seems to believable as we cannot expect  a larger variety</td>
+                                <td>Care must be taken while using for analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_about</td>
+                                <td>15692 missing values.</td>
+                                <td>Yes</td>
+                                <td>20589 duplicates.</td>
+                                <td>Yes in the form of Null values.</td>
+                                <td>20164 unique values. Usually, this field can be expected to have different information per host.</td>
+                                <td>Check consistency with the number of unique hosts.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_response_time</td>
+                                <td>13142 missing values.</td>
+                                <td>No. Different types of null values are being read.</td>
+                                <td>40748 duplicates.</td>
+                                <td>Outliers are in different forms of null values.</td>
+                                <td>5 unique values. Field value seems to be possible if populated with # of days.</td>
+                                <td>Seems to be consistent but with null value presence.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_response_rate</td>
+                                <td>13142 missing values.</td>
+                                <td>No as there are outliers.</td>
+                                <td>40661 duplicates.</td>
+                                <td>In the form of null values.</td>
+                                <td>92 unique values which seems to be acceptable.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_acceptance_rate</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>Nil</td>
+                                <td>Nil</td>
+                                <td>40753 unique values. Each value is unique.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_is_superhost</td>
+                                <td>251 missing values.</td>
+                                <td>Yes</td>
+                                <td>40750 duplicates.</td>
+                                <td>Nil</td>
+                                <td>33976 unique values. Such a count seems to be possible.</td>
+                                <td>No Issues except a slightly higher value of duplicates.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_picture_url</td>
+                                <td>251 missing values.</td>
+                                <td>Yes</td>
+                                <td>6777 duplicates.</td>
+                                <td>Nil</td>
+                                <td>33976 unique values. Such a count seems to be possible.</td>
+                                <td>No Issues except a slightly higher value of duplicates.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_neighborhood</td>
+                                <td>5194 missing values.</td>
+                                <td>Yes</td>
+                                <td>40373 duplicates.</td>
+                                <td>Yes. In the form of NA values.</td>
+                                <td>380 unique values. It is possible that the neiborhood value of multiple listings can be same.</td>
+                                <td>Lot of repetitions. Use cautiously.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_listings_count</td>
+                                <td>251 missing values.</td>
+                                <td>Yes</td>
+                                <td>40456 duplicates.</td>
+                                <td>Nil</td>
+                                <td>297 unique values. There is high chance that this value might repeat and the case here is the same.</td>
+                                <td>Lots of repetitions.</td>
+                              </tr>
+                              <tr>
+                                <td>Host_total_listing_count</td>
+                                <td>251 missing values.</td>
+                                <td>Yes</td>
+                                <td>40456 duplicates.</td>
+                                <td>Nil</td>
+                                <td>297 unique values. There is high chance that this value might repeat and the case here is the same.</td>
+                                <td>Lots of repetitions..</td>
+                              </tr>
+                              <tr>
+                                <td>Host_verifications</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40242 duplicates.</td>
+                                <td>Nil</td>
+                                <td>511 unique values. We expect duplicates here.</td>
+                                <td>No Issues</td>
+                              </tr>
+                              <tr>
+                                <td>Host_has_profile_pic</td>
+                                <td>251 missing values.</td>
+                                <td>Yes</td>
+                                <td>40750 duplicates..</td>
+                                <td>Nil</td>
+                                <td>3 unique values as expected.</td>
+                                <td>No Issues</td>
+                              </tr>
+                              <tr>
+                                <td>Host_identity_verified</td>
+                                <td>251 missing values.</td>
+                                <td>Yes</td>
+                                <td>40750 duplicates.</td>
+                                <td>Nil</td>
+                                <td>3 Unique vaues as expected.</td>
+                                <td>No Issues..</td>
+                              </tr>
+                              <tr>
+                                <td>Street</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>39123 duplicates.</td>
+                                <td>Nil</td>
+                                <td>1630 unique values. The number is a bit low to believable. It falls in the lower range of expect number of unique streets.</td>
+                                <td>Use in analysis with caution.</td>
+                              </tr>
+                              <tr>
+                                <td>Neighborhood</td>
+                                <td>6005 missing values.</td>
+                                <td>Yes</td>
+                                <td>40546 duplicates.</td>
+                                <td>Yes. In the form of outliers.</td>
+                                <td>207 unique values. We expect the number of neighborhoods to be around that range.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Neighborhood_cleansed</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40536 duplicates.</td>
+                                <td>Nil</td>
+                                <td>217 unique values which are as per expectations.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Neighborhood_group_cleansed</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40748 duplicate values.</td>
+                                <td>Nil</td>
+                                <td>5 unique values seems plausible.</td>
+                                <td>No Issues. Not much scope in this analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>City</td>
+                                <td>44 missing values.</td>
+                                <td>Yes</td>
+                                <td>40449 duplicate values.</td>
+                                <td>Nil</td>
+                                <td>304 unique values is more or less to the number of cities we expect to see in the whole data.</td>
+                                <td>This is an importamt measure and hence its clean quality makes it useful for analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>State</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40747 duplicates.</td>
+                                <td>Nil</td>
+                                <td>6 unique values which is less than 50 and seems possible.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Zipcode</td>
+                                <td>611 missing values.</td>
+                                <td>Yes</td>
+                                <td>40548 duplicates.</td>
+                                <td>Yes. In the form of missing values.</td>
+                                <td>205 unique zipcode values seems aggreable</td>
+                                <td>Important parameter in this analysis. No relevant issues.</td>
+                              </tr>
+                              <tr>
+                                <td>market</td>
+                                <td>146 missing values.</td>
+                                <td>Yes</td>
+                                <td>40724 duplicates</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>29 unique values. Believable.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Smart_location</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40751 duplicates.</td>
+                                <td>Nil</td>
+                                <td>2 unique values for a binary parameter seems consistent.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Country_code</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40751 duplicates.</td>
+                                <td>Nil</td>
+                                <td>2 unique values. A number like two is also worth speculating as the data is supposed to be usa based. If not then the data is as per standard.</td>
+                                <td>Check if data is from different countries.</td>
+                              </tr>
+                              <tr>
+                                <td>Country</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40751 duplicates.</td>
+                                <td>Nil</td>
+                                <td>2 unique values. A number like two is also worth speculating as the data is supposed to be usa based. If not then the data is as per standard.</td>
+                                <td>Check if data is from different countries.</td>
+                              </tr>
+                              <tr>
+                                <td>Latitude</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>Nil</td>
+                                <td>Nil</td>
+                                <td>40753 unique values. Each listings has unique longitude. It is a perfectly clean column.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Longitude</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>Nil</td>
+                                <td>Nil</td>
+                                <td>40753 unique values. Each listings has unique longitude. It is a perfectly clean column.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Is_location_exact</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40751 duplicates.</td>
+                                <td>Nil</td>
+                                <td>2 unique values for a binary question is perfect.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Property_type</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40726 duplicates.</td>
+                                <td>Nil</td>
+                                <td>27 unique values which is as far as classification can go and thus acceptable.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Room_type</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40750 duplicates.</td>
+                                <td>Nil</td>
+                                <td>3 unique values and is quite believable for a multiple choice question.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Accomodates</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40737 duplicates.</td>
+                                <td>Nil</td>
+                                <td>16 unique values can be expected as 1-16 is the usual range.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Bathrooms</td>
+                                <td>159 missing values.</td>
+                                <td>Yes</td>
+                                <td>40579 duplicates.</td>
+                                <td>Nil</td>
+                                <td>174 unique values seem to be not believable.</td>
+                                <td>Check the data for duplicates or odd values.</td>
+                              </tr>
+                              <tr>
+                                <td>Bedrooms</td>
+                                <td>69 missing values</td>
+                                <td>Yes</td>
+                                <td>40673 duplicates.</td>
+                                <td>Nil</td>
+                                <td>80 unique values for bedrooms seems to odd.</td>
+                                <td>Check the values in detail.</td>
+                              </tr>
+                              <tr>
+                                <td>Beds</td>
+                                <td>79 missing values.</td>
+                                <td>Yes</td>
+                                <td>40658 duplicates.</td>
+                                <td>Nil</td>
+                                <td>95 unique values.</td>
+                                <td>Check the values and types.</td>
+                              </tr>
+                              <tr>
+                                <td>Bed_type</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40748 duplicates.</td>
+                                <td>Nil</td>
+                                <td>5 unique values is believable.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Amenities</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>5616 duplicates.</td>
+                                <td>Nil</td>
+                                <td>35137 unique values. The count seems to be as per expectations.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Square_feet</td>
+                                <td>40186 missing values.</td>
+                                <td>No</td>
+                                <td>445 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>40308 unique values. It implies each null value is being treated as a different one.</td>
+                                <td>Data is completely messed up.</td>
+                              </tr>
+                              <tr>
+                                <td>Price</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40170 duplicates.</td>
+                                <td>Nil</td>
+                                <td>583 unique values. The count seems about right.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Weekly_price</td>
+                                <td>31745 missing values</td>
+                                <td>No</td>
+                                <td>39967 duplicates.</td>
+                                <td>Yes. In the form of missing values.</td>
+                                <td>786 unique values is believable.</td>
+                                <td>Lots of missing values. Take care during analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Monthly_price</td>
+                                <td>33341 missing values</td>
+                                <td>No</td>
+                                <td>39914 duplicates.</td>
+                                <td>Yes. In the form of missing values.</td>
+                                <td>839 unique values is believable.</td>
+                                <td>Lots of missing values. Take care during analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Security_deposit</td>
+                                <td>22960 missing values.</td>
+                                <td>No</td>
+                                <td>40153 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>240 unique values.</td>
+                                <td>Too many null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Cleaning_fee</td>
+                                <td>12692 missing values.</td>
+                                <td>No</td>
+                                <td>40581 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>172 unique values.</td>
+                                <td>Too many null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Guests_included</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40737 duplicates.</td>
+                                <td>Yes in the form of duplicates.</td>
+                                <td>240 unique values.</td>
+                                <td>Too many null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Extra_people</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40649 duplicates.</td>
+                                <td>Nil</td>
+                                <td>104 unique values seems believable.</td>
+                                <td>No Issues</td>
+                              </tr>
+                              <tr>
+                                <td>Minimum_nights</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40691 duplicates.</td>
+                                <td>Yes, in the form of large values.</td>
+                                <td>62 unique values seems believable.</td>
+                                <td>There are outliers present in the dataset. Need to be careful during analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Maximum_nights</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40487 duplicates.</td>
+                                <td>Yes, in the form of large values.</td>
+                                <td>266 unique values seems doubtful</td>
+                                <td>There are outliers present in the dataset. Need to be careful during analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Calendar_updated</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40684 duplicates.</td>
+                                <td>Nil</td>
+                                <td>69 unique values seems believable.</td>
+                                <td>There might be outliers present. Use with caution.</td>
+                              </tr>
+                              <tr>
+                                <td>Has_availability</td>
+                                <td>40753 missing values.</td>
+                                <td>Yes. All are empty.</td>
+                                <td>Nil</td>
+                                <td>Nil</td>
+                                <td>40753 null values explains the data is empty completely.</td>
+                                <td>ALL values are empty</td>
+                              </tr>
+                              <tr>
+                                <td>availability_30</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40722 duplicates.</td>
+                                <td>Nil</td>
+                                <td>31 unique values. Seems as per expectations.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>availability_60</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40692 duplicates.</td>
+                                <td>Nil</td>
+                                <td>61 unique values. Seems as per expectations.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>availability_90</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40662 duplicates.</td>
+                                <td>Nil</td>
+                                <td>91 unique values. Seems as per expectations.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>availability_365</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40387 duplicates.</td>
+                                <td>Nil</td>
+                                <td>366 unique values. Seems as per expectations.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Calendar_last_scraped</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40749 duplicates.</td>
+                                <td>Nil</td>
+                                <td>4 unique values. Seems correct.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Number_of_reviews</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40486 duplicates.</td>
+                                <td>Nil</td>
+                                <td>267 unique values. Seems as per expectations.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>First_review</td>
+                                <td>9299 missing values.</td>
+                                <td>No</td>
+                                <td>38510 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>32243 unique values. A lot of variety is expected.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Last_review</td>
+                                <td>9185 missing values.</td>
+                                <td>No</td>
+                                <td>39634 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>1119 unique values. Seems as per expectations.</td>
+                                <td>Lots of null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Review_score_rating</td>
+                                <td>9924 missing values.</td>
+                                <td>No</td>
+                                <td>30777 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>9976 unique values. Seems as per expectations.</td>
+                                <td>Lots of null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Review_scores_accuracy</td>
+                                <td>10017 missing values.</td>
+                                <td>No</td>
+                                <td>30727 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>10026 unique values. Seems as per expectations.</td>
+                                <td>Lots of null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Review_score_cleanliness</td>
+                                <td>9985 missing values.</td>
+                                <td>No</td>
+                                <td>30759 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>9994 unique values. Seems as per expectations.</td>
+                                <td>Lots of null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Review_score_checkin</td>
+                                <td>10036 missing values.</td>
+                                <td>No</td>
+                                <td>30708 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>10045 unique values. Seems as per expectations.</td>
+                                <td>Lots of null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Review_score_communication</td>
+                                <td>9986 missing values.</td>
+                                <td>No</td>
+                                <td>30758 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>9995 unique values. Seems as per expectations.</td>
+                                <td>Lots of null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Review_scores_location</td>
+                                <td>10037 missing values.</td>
+                                <td>No</td>
+                                <td>30707 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>10046 unique values. Seems as per expectations.</td>
+                                <td>Lots of null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Review_scores_value</td>
+                                <td>10039 missing values.</td>
+                                <td>No</td>
+                                <td>30705 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>10048 unique values. Seems as per expectations.</td>
+                                <td>Lots of null values.</td>
+                              </tr>
+                              <tr>
+                                <td>Requires_license</td>
+                                <td>Nil</td>
+                                <td>Yes. The same value is repating.</td>
+                                <td>40752 duplicates.</td>
+                                <td>Nil</td>
+                                <td>One unique value repeated all over.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>License</td>
+                                <td>40753 missings values.</td>
+                                <td>Yes. All values are empty.</td>
+                                <td>40753 duplicates.</td>
+                                <td>Nil</td>
+                                <td>All values are null/empty.</td>
+                                <td>Not suitable for any analysis.</td>
+                              </tr>
+                              <tr>
+                                <td>Jurisdiction_names</td>
+                                <td>40745 missing values.</td>
+                                <td>Yes. Mostly empty values.</td>
+                                <td>40749 duplicates.</td>
+                                <td>Yes, in the form of empty values</td>
+                                <td>4 uniqes values which is possible.</td>
+                                <td>No Issues apart from discussed alongside.</td>
+                              </tr>
+                              <tr>
+                                <td>Instant_bookable</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40751 duplicates.</td>
+                                <td>Nil</td>
+                                <td>2 unique values for a binary concepts is believable.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Cancellation_policy</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40747 duplicates.</td>
+                                <td>Nil</td>
+                                <td>6 unique values are believable.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Require_guest_profile_picture</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40751 duplicates.</td>
+                                <td>Nil</td>
+                                <td>2 unique values for a binary concepts is believable.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Require_guest_phone_verification</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40751 duplicates.</td>
+                                <td>Nil</td>
+                                <td>2 unique values for a binary concepts is believable.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Calculated_host_listings_count</td>
+                                <td>Nil</td>
+                                <td>Yes</td>
+                                <td>40732 duplicates.</td>
+                                <td>Nil</td>
+                                <td>21 unique values for this concept seems to be believable.</td>
+                                <td>No Issues.</td>
+                              </tr>
+                              <tr>
+                                <td>Reviews_per_month</td>
+                                <td>9299 missing values.</td>
+                                <td>No</td>
+                                <td>30621 duplicates.</td>
+                                <td>Yes in the form of missing values.</td>
+                                <td>10132 unique values. Seems as per expectations.</td>
+                                <td>Lots of null values.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>

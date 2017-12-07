@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Analysis-Introduction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          /* Style the tab */
+          div.tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          margin-left: 15px;
+          }
+          /* Style the buttons inside the tab */
+          div.tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: 1px solid #ccc;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          }
+          /* Change background color of buttons on hover */
+          div.tab button:hover {
+          background-color: #ddd;
+          }
+          /* Create an active/current tablink class */
+          div.tab button.active {
+          background-color: #ccc;
+          }
+          /* Style the tab content */
+          .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+          }
+          .grad {
+              background-color:#150434;
+              text-align: center;
+              color: white;
+              height: 120px;
+              margin-bottom: 10px;
+          }
+
+        .vertical-menu {
+            background-color:white;
+            color: black;
+            display: block;
+            padding: 12px;
+            font-size: 15px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+         a#active {
+            background-color:#ccc;
+            color: black;
+        }
+        a:active {
+          color: blue;
+        }
+
+        .btn-group {
+            background-color: #4CAF50;
+            /* Green background */
+            border: 1px solid green;
+            /* Green border */
+            color: white;
+            /* White text */
+            padding: 10px 24px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            float: left;
+            /* Float the buttons side by side */
+            left: 25%;
+            margin-top: 5%;
+        }
+
+        .btn-group:hover {
+            background-color: #3e8e41;
+        }
+        h4,h5{
+          text-decoration: underline;
+        }
+        li{
+          text-align: justify;
+        }
+    </style>
+    <script>
+    function openChart(evt, chartName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(chartName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    window.onload=function()
+    {
+      document.getElementById("first").click()
+    }
+    </script>
+</head>
+
+<body>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="grad">
+              <br/>
+              <h1>VISUAL&nbspNARRATIVE</h1>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid" style="">
+        <div style="margin:1%">
+            <div class="row">
+                <div class="col-lg-2">
+                  <div>
+                      <h3>Contents:</h3>
+                      <br/>
+                      <a class="vertical-menu" id="active" href="data_analysis_1.html">1. Introduction</a>
+                      <a class="vertical-menu" href="data_analysis_2.html">2. Revenue Analysis</a>
+                      <a class="vertical-menu" href="data_analysis_3.html">3. Discussion of ROI</a>
+                      <a class="vertical-menu" href="data_analysis_4.html">4. Market Concentration Analysis</a>
+                      <a class="vertical-menu" href="data_analysis_5.html">5. Real Estate Maket Analysis</a>
+                      <a class="vertical-menu" href="data_analysis_6.html">6. Tourism Impact</a>
+                      <a class="vertical-menu" href="data_analysis_7.html">7. Additional analysis</a>
+                      <a class="vertical-menu" href="data_analysis_8.html">8. Conclusion</a>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <a class="vertical-menu" href="../VisualNarrative.html"><span style="text-decoration:underline;color:blue;">Go to HOME</span></a>
+                      <br/>
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                        <div class="col-lg-11" style="border:1px solid black;margin-left:15px;">
+                          <h3>Problem Statement:</h3>
+                          <p style="font-size:18px;text-align:justify;">You are consulting for a real estate company that has a niche in purchasing properties to rent out short-term as part of their business model specifically within New York City.  The real estate company has already concluded that two bedroom properties are the most profitable; however, they do not know which zip codes are the best to invest in.</p>
+                          <p style="font-size:18px;text-align:justify;">The real estate company has engaged your firm to build out a data product and provide your conclusions to help them understand which zip codes would generate the most profit on short term rentals within New York City.</p>
+                          <br/>
+                          <h3>Hypothesis:</h3>
+                          <p style="font-size:18px;text-align:justify;">A zipcode which provides a decent amount of revenue, backed by a good house market value and the prospect of higher business opportunity is supposed to be a good candidate and should be in the chosen list of zipcodes to invest. Thus, such individual aspects need to be analyzed indivudually leading to a conclusion regarding the final candidate list of zipcodes.</p>
+                          <br/>
+                          <p style="font-size:18px;text-align:justify;"><mark>There are several factors such as Revenue, Return on Investment, Market Concentration, Real estate market values and tourism prospects etc. which are covered in the segments alongside. Please use the navigation buttons alongside to explore each topic.</mark></p>
+                          <br/>
+                          <p style="font-size:18px;text-align:justify;">Note: From the Data Quality Checks it's known that this data has some discrepancies. However, this can be overcome by performing some ETL processes and data cleaning operations. It must also be noted that all the analysis has been performed keeping New York city and 2 bedroom houses into consideration. Also, occupany has been assumed to be 75%.</p>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                        </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Quality-Introduction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          /* Style the tab */
+          div.tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          margin-left: 15px;
+          }
+          /* Style the buttons inside the tab */
+          div.tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: 1px solid #ccc;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          }
+          /* Change background color of buttons on hover */
+          div.tab button:hover {
+          background-color: #ddd;
+          }
+          /* Create an active/current tablink class */
+          div.tab button.active {
+          background-color: #ccc;
+          }
+          /* Style the tab content */
+          .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+          }
+          .grad {
+              background-color:#150434;
+              text-align: center;
+              color: white;
+              height: 120px;
+              margin-bottom: 10px;
+          }
+
+        .vertical-menu {
+            background-color:white;
+            color: black;
+            display: block;
+            padding: 12px;
+            font-size: 15px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+         a#active {
+            background-color:#ccc;
+            color: black;
+        }
+        a:active {
+          color: blue;
+        }
+
+        .btn-group {
+            background-color: #4CAF50;
+            /* Green background */
+            border: 1px solid green;
+            /* Green border */
+            color: white;
+            /* White text */
+            padding: 10px 24px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            float: left;
+            /* Float the buttons side by side */
+            left: 25%;
+            margin-top: 5%;
+        }
+
+        .btn-group:hover {
+            background-color: #3e8e41;
+        }
+        h4,h5{
+          text-decoration: underline;
+        }
+        li{
+          text-align: justify;
+        }
+    </style>
+    <script>
+    function openChart(evt, chartName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(chartName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    window.onload=function()
+    {
+      document.getElementById("first").click()
+    }
+    </script>
+</head>
+
+<body>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="grad">
+              <br/>
+              <h1>DATA&nbsp&nbspQUALITY&nbsp&nbspANALYSIS</h1>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid" style="">
+        <div style="margin:1%">
+            <div class="row">
+                <div class="col-lg-2" style="border-style:groove;border-width:5px;background-color:#eee;">
+                  <div>
+                      <h3>Contents:</h3
+                      <br/>
+                      <a class="vertical-menu" id="active" href="data_quality_1.html">1. Introduction</a>
+                      <a class="vertical-menu" href="data_quality_2.html">2. Price Values</a>
+                      <a class="vertical-menu" href="data_quality_3.html">3. Duration Of Stay</a>
+                      <a class="vertical-menu" href="data_quality_4.html">4. Sparse Data</a>
+                      <a class="vertical-menu" href="data_quality_5.html">5. Clean Data</a>
+                      <a class="vertical-menu" href="data_quality_6.html">6. Airbnb Data Quality</a>
+                      <a class="vertical-menu" href="data_quality_7.html">7. Zillow Data Quality</a>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <a class="vertical-menu" href="../VisualNarrative.html"><span style="text-decoration:underline;color:blue;">Go to HOME</span></a>
+                      <br/>
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                        <div class="col-lg-11" style="border:1px solid black;margin-left:15px;">
+                          <h4>INTRODUCTION:</h4>
+                          <p style="font-size:18px;text-align:justify;">Data Quality Analysis is an integral step in any data analytics based project. Real world data is not always well behaved. Many decisions need to be made in a consistent manner before diving into the analysis step. The main issues in this dataset is the presence of null values or empty fields. Another common problem which is dealt here is the presence of outliers which can be seen in the upcoming sections. The ability to recognize the existence of such conditions helps to choose appropriate statistics and data cleaning steps used in analysis. It also drives the flow of logic in creating charts and groups as per the decision and property being analyzed.</p>
+                          <p style="font-size:18px;text-align:justify;">In the following sections select fields can be seen with the mentioned properties. Also the final sections includes a comprehensive list of all the the fields in the datasets and their associated quality analysis.</p>
+                          <br/>
+                          <p style="font-size:18px;text-align:justify;">Following are the cases discussed in each of the topic along side:</p>
+                          <h5>Price values:</h5><p>This portion discusses the values of price in a listing. The veracity and possibilities of observing such values is critiqued. Also, the steps undertaken to tackle have been mentioned.</p>
+                          <h5>Duration Of Stay:</h5><p> This portion shows major fluctuations in the columns "minimum_nights" and "maximum_nights".
+                          <h5>Sparse Data:</h5> This portion discusses few sparse fields and field with lot of missing values.</h5>
+                          <h5>Clean Data:</h5> This section shows some samples of clean data which are using in the analysis</h5>
+                          <h5>AIRBNB Dataset Quality-By Column:</h5><pr> This portion lists the data quality of each column present in airbnb dataset.</p>
+                          <h5>ZILLOW Dataset Quality-By Column:</h5><pr> This portion lists the data quality of each column present in zillow dataset.</p>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+  </body>
+</html>

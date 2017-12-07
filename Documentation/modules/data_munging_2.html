@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Munging-Data Filtering</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          /* Style the tab */
+          div.tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          margin-left: 15px;
+          }
+          /* Style the buttons inside the tab */
+          div.tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: 1px solid #ccc;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          }
+          /* Change background color of buttons on hover */
+          div.tab button:hover {
+          background-color: #ddd;
+          }
+          /* Create an active/current tablink class */
+          div.tab button.active {
+          background-color: #ccc;
+          }
+          /* Style the tab content */
+          .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+          }
+          .grad {
+              background-color:#150434;
+              text-align: center;
+              color: white;
+              height: 120px;
+              margin-bottom: 10px;
+          }
+
+        .vertical-menu {
+            background-color:white;
+            color: black;
+            display: block;
+            padding: 12px;
+            font-size: 15px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+         a#active {
+            background-color:#ccc;
+            color: black;
+        }
+        a:active {
+          color: blue;
+        }
+
+        .btn-group {
+            background-color: #4CAF50;
+            /* Green background */
+            border: 1px solid green;
+            /* Green border */
+            color: white;
+            /* White text */
+            padding: 10px 24px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            float: left;
+            /* Float the buttons side by side */
+            left: 25%;
+            margin-top: 5%;
+        }
+
+        .btn-group:hover {
+            background-color: #3e8e41;
+        }
+        h4,h5{
+          text-decoration: underline;
+        }
+        li{
+          text-align: justify;
+        }
+    </style>
+    <script>
+    function openChart(evt, chartName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(chartName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    window.onload=function()
+    {
+      document.getElementById("first").click()
+    }
+    </script>
+</head>
+
+<body>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="grad">
+              <br/>
+              <h1>DATA&nbsp&nbspMUNGING</h1>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid" style="">
+        <div style="margin:1%">
+            <div class="row">
+                <div class="col-lg-2" style="border-style:groove;border-width:5px;background-color:#eee;">
+                  <div>
+                      <h3>Contents:</h3>
+                      <br/>
+                      <a class="vertical-menu" href="data_munging_1.html">1. Introduction</a>
+                      <a class="vertical-menu" id="active" href="data_munging_2.html">2. Data Filtering</a>
+                      <a class="vertical-menu" href="data_munging_3.html">3. House Prices</a>
+                      <a class="vertical-menu" href="data_munging_4.html">4. Common Zipcodes</a>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <a class="vertical-menu" href="../VisualNarrative.html"><span style="text-decoration:underline;color:blue;">Go to HOME</span></a>
+                      <br/>
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                      <div class="col-lg-11" style="border:1px solid black;margin-left:15px;">
+                        <p style="font-size:18px;text-align:justify;">This section explains the steps taken to filter the data in a generic way and save the filtered files in a requisite file format so that it can be loaded and reused whenever required.</p>
+                        <p style="font-size:18px;text-align:justify;">It starts by accepting user inputs regarding filters in the columns of each datadset. For example: in the current case of the airbnb dataset, the city needs to be New York and the number of bedrooms in each listing to be equal to 2. Also, in the zillow dataset the city needs to be New York. The user passes the required column and value filter in the form of a hash-map. Each dataset must have its own hash-map. Once the map is sent to the executing file; it filters the datasets keeping in mind the passed filter considerations. Then it saves the files into a json format.</p>
+                        <br/>
+                        <h5>Below is an example of the syntax of the filter file:<h5>
+                        <h4 style="text-decoration:none;">{"column_name_1":[field_value,operation],"column_name_2":[field_value,operation], ...}</h4>
+                        <br/>
+                        <h5>Example of filter files:</h5>
+                        <table style="border:1px solid black;" class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>AIRBNB Dataset Filter HashMap</th>
+                              <th>ZILLOW Dataset Filter HashMap</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>{"city":["New York","eq"],"bedrooms":[2.0,"eq"]}</td>
+                              <td>{"City":["New York","eq"]}</td>
+                            </tr>
+                            <tr>
+                              <td>{"city":["New York","eq"],"bedrooms":[2.0,"gte"],"zipcode":["10027","eq"]}</td>
+                              <td>{"City":["New York","eq"],"RegionName":["10027","eq"]}</td>
+                            </tr>
+                            <tr>
+                              <td>{"city":["New York","eq"],"bedrooms":[2.0,"lt"],"bathrooms":[2.5,"lt"]}</td>
+                              <td>{"City":["New York","neq"}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <br/>
+                          <p style="font-size:18px;text-align:justify;"> Above are examples of filter files which the user can send as input to the function. Clearly, it can be noticed that it is a quite generic function and accept lists as values in the hashmap. The list contains basically two values. One is the field_value to be compared with and the next is the operation of comparison. All the standard operations of comparison are allowed and are listed below for reference. The key value in the hasmap is the colummn name to which the field_value is being compared with. With a correct setting of such a filter file; one can try to filter the data in a lot of ways and as per the requirement.</p>
+                          <h5>List of operations:</h5>
+                          <ul>
+                            <li>"eq"&nbsp&nbsp&nbsp&nbsp: Equals to</li>
+                            <li>"neq"&nbsp&nbsp: Not Equals to</li>
+                            <li>"lte"&nbsp&nbsp&nbsp&nbsp: Less than or Equal to</li>
+                            <li>"gte"&nbsp&nbsp&nbsp: Greater than or Equal to</li>
+                            <li>"lt"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: Less than</li>
+                            <li>"gt"&nbsp&nbsp&nbsp&nbsp&nbsp: Greater than</li>
+                          </ul>
+
+                        <br/>
+                        <br/><br/>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>

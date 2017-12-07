@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Munging-Common Zipcodes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          /* Style the tab */
+          div.tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          margin-left: 15px;
+          }
+          /* Style the buttons inside the tab */
+          div.tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: 1px solid #ccc;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+          }
+          /* Change background color of buttons on hover */
+          div.tab button:hover {
+          background-color: #ddd;
+          }
+          /* Create an active/current tablink class */
+          div.tab button.active {
+          background-color: #ccc;
+          }
+          /* Style the tab content */
+          .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border-top: none;
+          }
+          .grad {
+              background-color:#150434;
+              text-align: center;
+              color: white;
+              height: 120px;
+              margin-bottom: 10px;
+          }
+
+        .vertical-menu {
+            background-color:white;
+            color: black;
+            display: block;
+            padding: 12px;
+            font-size: 15px;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+         a#active {
+            background-color:#ccc;
+            color: black;
+        }
+        a:active {
+          color: blue;
+        }
+
+        .btn-group {
+            background-color: #4CAF50;
+            /* Green background */
+            border: 1px solid green;
+            /* Green border */
+            color: white;
+            /* White text */
+            padding: 10px 24px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            float: left;
+            /* Float the buttons side by side */
+            left: 25%;
+            margin-top: 5%;
+        }
+
+        .btn-group:hover {
+            background-color: #3e8e41;
+        }
+        h4,h5{
+          text-decoration: underline;
+        }
+        li{
+          text-align: justify;
+        }
+    </style>
+    <script>
+    function openChart(evt, chartName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(chartName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    window.onload=function()
+    {
+      document.getElementById("first").click()
+    }
+    </script>
+</head>
+
+<body>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="grad">
+              <br/>
+              <h1>DATA&nbsp&nbspMUNGING</h1>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid" style="">
+        <div style="margin:1%">
+            <div class="row">
+                <div class="col-lg-2" style="border-style:groove;border-width:5px;background-color:#eee;">
+                  <div>
+                      <h3>Contents:</h3>
+                      <br/>
+                      <a class="vertical-menu" href="data_munging_1.html">1. Introduction</a>
+                      <a class="vertical-menu" href="data_munging_2.html">2. Data Filtering</a>
+                      <a class="vertical-menu" href="data_munging_3.html">3. House Prices</a>
+                      <a class="vertical-menu" id="active" href="data_munging_4.html">4. Common Zipcodes</a>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <a class="vertical-menu" href="../VisualNarrative.html"><span style="text-decoration:underline;color:blue;">Go to HOME</span></a>
+                      <br/>
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                      <div class="col-lg-11" style="border:1px solid black;margin-left:15px;">
+                        <p style="font-size:18px;text-align:justify;">While merging and handling the data it can be observed that the zipcodes present in the airbnb data and zillow data are not the same completely. The airbnb dataset has got more zipcodes than the zillow ones. On the other hand, all the financial information regarding real estate is present with the zillow zipcode related data. A best option is to find an intersection of the unique zipcodes present in both the datasets. It must realized that all these steps are being done after the first basic filtering step of choosing New York city and two bedroom listings.</p>
+                        <br/>
+                        <p style="font-size:18px;text-align:justify;">Following is a list of all the zipcodes in airbnb data-:</p>
+                        <p style="font-size:18px;text-align:justify;">[11102, nan, 10028, 10013, 10023, 11238, 10040, 10031, 10003, 10026, 10037, 10029, 10004, 11208, 10002, 10014, 10011, 10034, 10019, 10032, 10009, 10044, 11221, 10111, 10007, 10162, 11226, 11216, 10016, 11213, 11432, 10030, 11222, 10025, 10006, 10003-8623, 10280, 10038, 10301, 10075, 10018, 11249, 10069, 10035, 10128, 10012, 10039, 10001, 11372, 10022, 11232, 11205, 10065, 10027, 10005, 10010, 10024, 11101, 10017, 11106, 10033, 10036, 11385, 10270, 11354, 10021, 11211]</p>
+                        <br>
+                        <p style="font-size:18px;text-align:justify;">Following is a list of all the zipcodes in zillow data-:</p>
+                        <p style="font-size:18px;text-align:justify;">[10128, 10003, 10011, 10013, 10014, 10021, 10022, 10023, 10025, 11434, 10028, 10036, 10303, 10304, 11201, 10306, 10305, 10308, 10309, 10312, 10314, 11215, 11217, 11231, 11234]</p>
+                        <br>
+                        <p style="font-size:18px;text-align:justify;">Following is a list of all the common zipcodes-:</p>
+                        <p style="font-size:18px;text-align:justify;">[10022, 10003, 10025, 10036, 10028, 10023, 10021, 10013, 10014, 10128, 10011]</p>
+
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>
